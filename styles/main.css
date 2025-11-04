@@ -1,0 +1,208 @@
+/* Main Stylesheet for Rechnify Website */
+
+/* Base Styles */
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+}
+
+/* Container Styles */
+.container {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 18px;
+    padding: 44px 32px 32px 32px;
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.10);
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+}
+
+.kontakt-container {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 18px;
+    padding: 44px 32px 32px 32px;
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.10);
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Typography */
+h1 {
+    color: #3b82f6;
+    margin-top: 0;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+
+p {
+    color: #374151;
+    font-size: 1.1rem;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.nav-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    background: #3498db;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.10);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: #2c3e50;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(44, 62, 80, 0.10);
+}
+
+/* Button Styles */
+.button-group {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 12px 0;
+    text-decoration: none;
+    background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px 0 rgba(59, 130, 246, 0.09);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.button-link:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 10px 22px;
+    background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: 0 2px 8px 0 rgba(59, 130, 246, 0.09);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.back-link:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* Form Styles */
+form {
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 18px;
+    padding: 44px 32px 32px 32px;
+    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.10);
+    max-width: 500px;
+    margin: 2rem auto;
+}
+
+label {
+    display: block;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border 0.3s;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+input[type="submit"],
+button[type="submit"] {
+    margin-top: 1.5rem;
+    padding: 12px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px 0 rgba(59, 130, 246, 0.09);
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .container,
+    .kontakt-container,
+    form {
+        padding: 28px 16px 20px 16px;
+        max-width: 95vw;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .nav-btn {
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+}
