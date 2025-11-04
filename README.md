@@ -2,6 +2,18 @@
 
 Ein smarter Einstieg in Verwaltung und Kalkulation für Rechnungen.
 
+## ⚠️ WICHTIG: Vor Produktiveinsatz lesen!
+
+**KRITISCHE Sicherheitshinweise für Production:**
+1. 🔴 Client-Side Passwort in `js/auth.js` durch Server-Auth ersetzen
+2. 🔴 Umgebung auf 'production' in `config/environment.php` setzen
+3. 🔴 Starke Datenbank-Passwörter in `config/database.php` setzen
+4. 🔴 Google API Domain-Beschränkungen konfigurieren
+5. 🔴 HTTPS aktivieren
+6. 🔴 Setup-Script `tabelle_kunden_anlegen.php` löschen
+
+Siehe Abschnitt "Sicherheitshinweise" unten für Details.
+
 ## Funktionen
 
 - Professioneller Rechnungs-Generator

@@ -9,6 +9,8 @@
 
 require_once __DIR__ . '/config/environment.php';
 
+// Note: For initial setup, we connect without selecting a database
+// since the database may not exist yet
 $servername = "localhost";
 $username = "root";
 $password = "";

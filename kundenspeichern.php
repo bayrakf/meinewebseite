@@ -65,8 +65,10 @@ try {
     
     // Execute statement
     if (!$stmt->execute()) {
-        error_log("Database insert failed: " . $stmt->error);
-        throw new Exception("Fehler beim Speichern der Daten. Bitte versuchen Sie es später erneut.");
+        // Log technical details for debugging (only visible to server admins)
+        $errorId = uniqid('db_error_', true);
+        error_log("Database insert failed [$errorId]: " . $stmt->error);
+        throw new Exception("Fehler beim Speichern der Daten. Bitte versuchen Sie es später erneut. (Error ID: $errorId)");
     }
     
     $customerId = $stmt->insert_id;
