@@ -36,32 +36,64 @@ Ein smarter Einstieg in Verwaltung und Kalkulation für Rechnungen.
 ✅ **Fehlerbehandlung**: Ordnungsgemäße Fehlerbehandlung ohne sensible Daten preiszugeben
 ✅ **Konfigurationstrennung**: Datenbankzugangsdaten in separater Config-Datei
 ✅ **Config-Schutz**: .htaccess schützt config-Verzeichnis
+✅ **Umgebungskonfiguration**: Separate Einstellungen für Entwicklung/Produktion
 
-### Noch zu implementieren für Produktionsumgebung:
+### KRITISCH - Vor Produktiveinsatz zu implementieren:
 
-⚠️ **Passwortschutz**: Das Passwort in `geheim.html` ist im Client-sichtbar
-   - **Empfehlung**: Serverseitige Authentifizierung implementieren
-   - **Alternative**: .htaccess Passwortschutz verwenden
+🔴 **CLIENT-SIDE PASSWORT (HÖCHSTE PRIORITÄT)**
+   - **Problem**: Das Passwort in `js/auth.js` ist im Browser-Code sichtbar und bietet KEINE echte Sicherheit
+   - **Lösung 1 (Empfohlen)**: Server-seitige PHP-Authentifizierung mit Session
+     ```php
+     // Beispiel: login.php mit session_start(), password_verify()
+     session_start();
+     if (!isset($_SESSION['authenticated'])) {
+         header('Location: login.php');
+         exit;
+     }
+     ```
+   - **Lösung 2**: Apache .htaccess Passwortschutz
+     ```apache
+     AuthType Basic
+     AuthName "Geschützter Bereich"
+     AuthUserFile /pfad/zu/.htpasswd
+     Require valid-user
+     ```
+   - **Lösung 3**: OAuth/SSO Integration (z.B. Google Workspace)
 
-⚠️ **Google API Credentials**: Client-ID ist im Code sichtbar
-   - **Hinweis**: Normale Praxis für OAuth, aber Zugriff sollte über Berechtigungen eingeschränkt werden
-   - **Empfehlung**: API-Schlüssel-Beschränkungen in Google Cloud Console setzen
+🔴 **UMGEBUNGSKONFIGURATION**
+   - In `config/environment.php` auf `'production'` setzen
+   - Dadurch werden Fehlerausgaben automatisch deaktiviert
 
-⚠️ **HTTPS**: Für Produktivumgebung unbedingt HTTPS verwenden
-   - Schützt Datenübertragung
-   - Erforderlich für viele moderne Web-APIs
+⚠️ **Google API Credentials**
+   - Client-ID in `js/invoice.js` ist sichtbar (normale OAuth-Praxis)
+   - **WICHTIG**: In Google Cloud Console konfigurieren:
+     - Autorisierte JavaScript-Ursprünge beschränken
+     - API-Nutzungskontingente setzen
+     - Nur erforderliche Scopes gewähren
 
-⚠️ **Datenbank-Credentials**: 
+⚠️ **HTTPS verwenden**
+   - Für Produktivumgebung ZWINGEND HTTPS aktivieren
+   - Schützt Datenübertragung und Passwörter
+   - Erforderlich für moderne Web-APIs und OAuth
+
+⚠️ **Datenbank-Credentials**
    - `config/database.php` sollte außerhalb des Web-Root liegen
-   - Starke Passwörter verwenden (nicht leer lassen)
-   - Separate Datenbankbenutzer mit minimalen Rechten
+   - Oder zusätzlich mit .htaccess schützen (bereits vorhanden)
+   - **UNBEDINGT**: Starke Passwörter verwenden (nicht leer!)
+   - Separate Datenbankbenutzer mit minimalen Rechten erstellen
 
-⚠️ **Setup-Script**: 
-   - `tabelle_kunden_anlegen.php` nach Setup löschen oder schützen
+⚠️ **Setup-Script entfernen**
+   - `tabelle_kunden_anlegen.php` nach einmaligem Ausführen LÖSCHEN
+   - Oder mit .htaccess schützen
+   - Exponiert sonst Datenbankstruktur
 
-⚠️ **Fehlerausgabe**: 
-   - `display_errors` auf 0 setzen in Produktion
-   - Fehler nur in Log-Dateien speichern
+⚠️ **Weitere Produktions-Checkliste**
+   - [ ] PHP-Version aktuell halten
+   - [ ] Regelmäßige Backups der Datenbank
+   - [ ] Log-Dateien überwachen
+   - [ ] File-Upload-Validierung bei Logo-Upload verstärken
+   - [ ] Rate-Limiting für API-Anfragen implementieren
+   - [ ] Content Security Policy (CSP) Header setzen
 
 ## Code-Verbesserungen
 

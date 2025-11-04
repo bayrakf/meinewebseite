@@ -1,8 +1,19 @@
 /**
  * Invoice Generator Application
  * Main JavaScript for the professional invoice generator
+ * 
+ * SECURITY NOTE - Google Client ID:
+ * The Google OAuth Client ID below is intentionally public (this is standard OAuth practice).
+ * However, you MUST configure the following in Google Cloud Console:
+ * - Authorized JavaScript origins (restrict to your domain)
+ * - Authorized redirect URIs
+ * - API quota limits
+ * - Only enable required OAuth scopes
+ * 
+ * Without these restrictions, your Client ID could be abused for phishing or API quota theft.
  */
 
+// Google OAuth Client ID - Public, but MUST be restricted in Google Cloud Console
 const GOOGLE_CLIENT_ID = '571339195704-h27i7flf8fp0l46enksh7hthe7rvp37d.apps.googleusercontent.com';
 let googleUser = null;
 let googleAccessToken = null;

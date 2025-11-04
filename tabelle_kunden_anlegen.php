@@ -3,12 +3,11 @@
  * Database Setup Script
  * Creates database and customer table if they don't exist
  * 
- * SECURITY NOTE: This file should be protected or removed in production
+ * SECURITY WARNING: This file should be deleted or protected after initial setup!
+ * It exposes database structure and could be abused in production.
  */
 
-// Set error reporting
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require_once __DIR__ . '/config/environment.php';
 
 $servername = "localhost";
 $username = "root";

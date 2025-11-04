@@ -4,11 +4,8 @@
  * Processes and saves customer information to database
  */
 
+require_once __DIR__ . '/config/environment.php';
 require_once __DIR__ . '/config/database.php';
-
-// Set error reporting for production
-ini_set('display_errors', 0);
-error_reporting(E_ALL);
 
 // Start output buffering
 ob_start();
