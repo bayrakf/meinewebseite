@@ -2,16 +2,38 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Kunde speichern</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kundendaten speichern - Rechnify">
+  <title>Kunde speichern - Rechnify</title>
+  <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <h1>Kundendaten speichern</h1>
+  <nav class="navbar">
+    <a href="index.html" class="nav-btn">Startseite</a>
+    <a href="geheim.html" class="nav-btn">Geheime Seite</a>
+    <a href="kontakt.html" class="nav-btn">Kontakt</a>
+  </nav>
+  
   <form action="kundenspeichern.php" method="post">
-    Name: <input type="text" name="name"><br><br>
-    E-Mail: <input type="email" name="email"><br><br>
-    Adresse: <input type="text" name="adresse"><br><br>
-    Firmenname: <input type="text" name="firmenname"><br><br>
+    <h1>Kundendaten speichern</h1>
+    
+    <label for="name">Name: <span style="color: #e74c3c;">*</span></label>
+    <input type="text" id="name" name="name" required aria-required="true">
+    
+    <label for="email">E-Mail: <span style="color: #e74c3c;">*</span></label>
+    <input type="email" id="email" name="email" required aria-required="true">
+    
+    <label for="adresse">Adresse:</label>
+    <textarea id="adresse" name="adresse" rows="3"></textarea>
+    
+    <label for="firmenname">Firmenname:</label>
+    <input type="text" id="firmenname" name="firmenname">
+    
     <input type="submit" value="Speichern">
+    
+    <div style="margin-top: 20px; text-align: center;">
+      <a href="index.html" class="back-link">Zurück zur Startseite</a>
+    </div>
   </form>
 </body>
 </html>
